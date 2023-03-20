@@ -7,7 +7,6 @@ import filters.Filters;
 import filters.Size;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -263,6 +262,18 @@ public class WishListTest extends TestBase {
                 () -> assertEquals(itemNameFromWishlist.substring(0, 20), basketProductName.substring(0, 20)),
                 () -> assertEquals(itemNameFromWishlist.substring(0,30) + "\n" + "Размер: " + wishListProductSize,
                         basketProductName.substring(0,30) +  "\n" + basketProductSize));
+    }
+    /**
+     * Удаление товара из избранного:<p>
+     *
+     */
+    @Test()
+    @Description("Блок тестов по удалению товаров из избранного")
+    public void deleteItemToWishlist() {
+        driver.get(getUrl + "catalog/");
+        wishlist.clickToAddToWishlistFromCatalogButton();
+        wishlist.clickToWishListButton();
+        wishlist.clickToDeleteFromWishlist();
     }
 
 }
